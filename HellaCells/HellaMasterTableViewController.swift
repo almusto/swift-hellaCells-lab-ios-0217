@@ -47,19 +47,23 @@ class HellaMasterTableViewController : UITableViewController {
     return cell
   }
 
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier != "NumberViewDetail" { return }
-    if let dest = segue.destination as? NumberView,
-      let indexPath = tableView.indexPathForSelectedRow {
-      dest.number = numbers[indexPath.row]
-    }
+  //  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+  //    if segue.identifier != "NumberViewDetail" { return }
+  //    if let dest = segue.destination as? NumberView,
+  //      let indexPath = tableView.indexPathForSelectedRow {
+  //      dest.number = numbers[indexPath.row]
+  //    }
+  //  }
+
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    let numberVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NumberVC") as! NumberViewController
+    let number = String(numbers[indexPath.item])
+    numberVC.number = number
+    navigationController?.pushViewController(numberVC, animated: true)
   }
-
-
   
-
-
-
-
-
+  
+  
+  
 }
