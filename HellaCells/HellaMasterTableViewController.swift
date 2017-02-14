@@ -56,11 +56,12 @@ class HellaMasterTableViewController : UITableViewController {
   //  }
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-    let numberVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NumberVC") as! NumberViewController
+    let numberVC = NumberViewController()
     let number = String(numbers[indexPath.item])
-    numberVC.number = number
+    numberVC.navigationItem.title = number
+    numberVC.numberLabel.text = number
     navigationController?.pushViewController(numberVC, animated: true)
+
   }
   
   
